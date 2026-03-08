@@ -1,0 +1,38 @@
+{
+	"version": 3,
+	"configurePresets": [
+		// Standard dev preset
+		{
+			"name": "dev",
+			"displayName": "Development",
+			"generator": "Ninja",
+			"binaryDir": "build",
+			"cacheVariables": {
+				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+			}
+		},
+
+		// Release preset: Sets build type to release to allow compiler optimisations
+		{
+			"name": "rel",
+			"displayName": "Release",
+			"generator": "Ninja",
+			"binaryDir": "build",
+			"cacheVariables": {
+				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+				"CMAKE_BUILD_TYPE": "Release"
+			}
+		}
+	],
+
+	"buildPresets": [
+		{
+			"name": "dev",
+			"configurePreset": "dev"
+		},
+		{
+			"name": "rel",
+			"configurePreset": "rel"
+		}
+	]
+}
