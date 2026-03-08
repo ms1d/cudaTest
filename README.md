@@ -11,6 +11,12 @@ A space for me to learn cuda for a path tracing project (c++).
 3. As pixels finish, send them over a udp connection indexed by frame number & position
 4. Client can handle the pixels received
 
+## Current Build Instructions
+
+- Configuration: `cmake --preset dev`
+
+- Build: `ninja -C build`
+
 ## Stack
 
 - CMake + Ninja for build tools
