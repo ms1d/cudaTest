@@ -1,9 +1,12 @@
-#include <iostream>
-#include "test.h"
 #include "testkernel.h"
+#include <iostream>
 
 int main() {
-	std::cout << SayHello() << "\n";
-	launchTest();
+	auto res = launchTest();
+
+	for (int i = 0; i < res.arrLength; i++) {
+		std::cout << res.A[i] << " + " << res.B[i] << " = " << res.C[i] << "\n";
+	}
+
 	return 0;
 }
