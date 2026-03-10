@@ -1,5 +1,11 @@
 #pragma once
-#define RAY_STRUCT_H
+
+#ifndef __host__
+#define __host__
+#endif
+#ifndef __device__
+#define __device__
+#endif
 
 #include "vec3.h"
 
@@ -8,7 +14,7 @@ struct Ray {
 		vec3 origin;
         vec3 direction;
 
-		Ray(const vec3& origin, const vec3& direction);
+		__host__ __device__ Ray(const vec3& origin, const vec3& direction);
 
-		vec3 GetPoint(float t) const;
+		__host__ __device__ vec3 GetPoint(float t) const;
 };
