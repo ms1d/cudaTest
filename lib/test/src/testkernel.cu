@@ -1,8 +1,9 @@
 #include "testkernel.h"
+#include "vec3.h"
 #include <cmath>
 #include <curand_kernel.h>
 
-__global__ void addNums(float* A, float* B, float* C, const int arrLength) {
+__global__ void addNums(vec3* A, vec3* B, vec3* C, const int arrLength) {
 	int id = threadIdx.x + blockDim.x * blockIdx.x;
 
 	if (id >= arrLength) return;
@@ -10,14 +11,16 @@ __global__ void addNums(float* A, float* B, float* C, const int arrLength) {
 	C[id] = A[id] + B[id];
 }
 
-__global__ void initArray(float* arr, const int arrLength, unsigned long seed) {
+__global__ void initArray(vec3* arr, const int arrLength, unsigned long seed) {
 	int id = threadIdx.x + blockDim.x * blockIdx.x;
 	if (id > arrLength) return;
 
 	curandState state;
 	curand_init(seed, id, 0, &state);
 
-	arr[id] = curand_uniform(&state);
+	arr[id].x = curand_uniform(&state);
+	arr[id].y = curand_uniform(&state);
+	arr[id].z = curand_uniform(&state);
 }
 
 
@@ -26,13 +29,13 @@ testResult launchTest() {
 	const int arrLength = 4096;
 	const int threads = 256;
 
-	float* A = nullptr;
-	float* B = nullptr;
-	float* C = nullptr;
+	vec3* A = nullptr;
+	vec3* B = nullptr;
+	vec3* C = nullptr;
 
-	cudaMallocManaged(&A, arrLength*sizeof(float));
-    cudaMallocManaged(&B, arrLength*sizeof(float));
-    cudaMallocManaged(&C, arrLength*sizeof(float));
+	cudaMallocManaged(&A, arrLength*sizeof(vec3));
+    cudaMallocManaged(&B, arrLength*sizeof(vec3));
+    cudaMallocManaged(&C, arrLength*sizeof(vec3));
 
 	int blocks = ceil((float)arrLength / threads);
 

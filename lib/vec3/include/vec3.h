@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #ifndef __host__
 #define __host__
 #endif
@@ -35,4 +37,6 @@ struct vec3 {
 		__host__ __device__ friend vec3 operator*(float scalar, const vec3& v) {
 			return v * scalar;
 		}
+
+		friend std::ostream& operator<<(std::ostream& os, const vec3& v);
 };
