@@ -6,7 +6,8 @@ __host__ __device__ vec3 MTRayTriIntersect(Ray ray, vec3 tri) {
 
 }
 
-// Get the t value of the intersection of a ray and a point if it exists. t >= 0
+// Get the t value of the intersection of a ray and a point if it exists
+// Negative values of t indicate no intersection
 __host__ __device__ float getIntersectionT(Ray ray, vec3 point) {
 	vec3 u = (point - ray.origin);
 	
