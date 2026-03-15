@@ -21,7 +21,6 @@
 template<size_t dim, class Derived>
 struct vec_base {
     static_assert(dim > 1, "Vector dimensions must be > 1");
-    float data[dim];
 
 
 
@@ -131,7 +130,9 @@ __host__ __device__ bool operator==(const vec_base<dim, Derived>& lhs, const vec
 
 
 template<size_t dim>
-struct vec : vec_base<dim, vec<dim>> {};
+struct vec : vec_base<dim, vec<dim>> {
+	float data[dim];
+};
 
 
 
