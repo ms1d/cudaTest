@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.26)
 
 project(cudaTest LANGUAGES CXX CUDA)
 
+option(BUILD_TESTS "Build tests" ON)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -16,5 +18,3 @@ endif()
 add_executable(cudaTest src/main.cpp)
 
 add_subdirectory(lib)
-
-option(BUILD_TESTS "Build test suite" ON)

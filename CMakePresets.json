@@ -5,7 +5,7 @@
 			"name": "dev",
 			"displayName": "Development",
 			"generator": "Ninja",
-			"binaryDir": "build",
+			"binaryDir": "build/dev",
 			"cacheVariables": {
 				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
 				"BUILD_TESTS": "ON"
@@ -16,10 +16,11 @@
 			"name": "rel",
 			"displayName": "Release",
 			"generator": "Ninja",
-			"binaryDir": "build",
+			"binaryDir": "build/rel",
 			"cacheVariables": {
 				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-				"CMAKE_BUILD_TYPE": "Release"
+				"CMAKE_BUILD_TYPE": "Release",
+				"BUILD_TESTS": "OFF"
 			}
 		}
 	],

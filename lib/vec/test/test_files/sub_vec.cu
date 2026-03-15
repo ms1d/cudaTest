@@ -3,7 +3,7 @@
 #include "vec.h"
 
 template<size_t dim>
-__global__ void sub_kernel(const vec<dim>* v1, const vec<dim>* v2, vec<dim>* v3) {
+__global__ void sub_vec_kernel(const vec<dim>* v1, const vec<dim>* v2, vec<dim>* v3) {
 	*v3 = *v1 - *v2;
 }
 
@@ -18,7 +18,7 @@ void sub_vec_cu() {
 	*v1 = init_vec<dim>();
     *v2 = init_vec<dim>();
 
-	sub_kernel<<<1, 1>>>(v1, v2, v3);
+	sub_vec_kernel<<<1, 1>>>(v1, v2, v3);
 	cudaDeviceSynchronize();
 
 	for (size_t i = 0; i < dim; i++)
