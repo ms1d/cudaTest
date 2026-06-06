@@ -2,8 +2,8 @@
 
 ## About
 
-A C++20 path tracer server as a personal project.
-See also `ms1d/path-tracer` and `ms1d/path-tracer-api`.
+A web-first concurrent BVH-accelerated C++20 path tracer
+supporting both CPU and GPU compute
 
 ## Plan
 
@@ -13,7 +13,7 @@ See also `ms1d/path-tracer` and `ms1d/path-tracer-api`.
 
 - Take in BVH input, concurrently render over a thread pool
 
-- Stream pixels to UDP clients + send checkpoints over tcp
+- Stream pixels to UDP clients + send checkpoints over TCP
 
 ### Phase 2
 
@@ -37,7 +37,7 @@ See also `ms1d/path-tracer` and `ms1d/path-tracer-api`.
 
 - Test: `cd build/<preset name> && ctest` from project root
 
-## Stack
+## Stack + Libs
 
 - CMake + Ninja for build tools
 
